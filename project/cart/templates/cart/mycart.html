@@ -1,0 +1,66 @@
+{% extends "cart/base.html" %}
+{% block content %}
+<div class="jumbotron">
+  <h1>MY CART</h1>
+  <p>
+
+  </p>
+  {% if object.get_cart_items.exists %}
+
+  <table class="table  table-hover table-dark">
+    <thead class="bg-danger">
+
+      <tr>
+        <th><h4>#</h4></th>
+        <th><h4>ITEM</h4></th>
+        <th><h4>PRICE</h4></th>
+        <th><h4>QUANTITY</h4></th>
+        <th><h4>TOTAL ITEM PRICE</h4></th>
+        <th>
+
+        </th>
+
+      </tr>
+    </thead>
+    {% endif %}
+    {% for order_item in object.get_cart_items  %}
+    <tr >
+      <td><h5>{{ forloop.counter }}</h5></td>
+      <td><a style="color:white;"href="{% url 'productdetail' order_item.product.id %}"><h5>{{ order_item.product.title }}</h5></a></td>
+      <td><h5>Rs {{order_item.product.price}}</h5> </td>
+      <td><a class="btn btn-light" style="color:black" href="{% url 'addtocart' order_item.product.id  %}"> <h5> + </h5> </a>  {{ order_item.quantity }}  <a class="btn btn-light" style="color:black" href="{% url 'removesingle' order_item.product.id  %}"><h5>-</h5></a></td>
+      <td><h5> Rs {{ order_item.totalprice }}</h5></td>
+      <td>
+        <a class="btn btn-danger" href="{% url 'removefromcart' order_item.product.id %}"><h5>REMOVE</h5></a>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        {% empty %}
+        <h1>Your cart is empty!</h1>
+
+      </td>
+    </tr>
+
+    {% endfor %}
+  {% if object.get_cart_items.exists %}
+    <tr class="bg-danger">
+      <td></td>
+      <td></td>
+      <td></td>
+      <td> <h4 >ORDER TOTAL</h4> </td>
+      <td>
+        <h4 >Rs {{ object.get_cart_total}}</h4>
+      </td>
+      <td></td>
+
+    </tr>
+    {% endif %}
+
+
+  </table>
+  {% if object.get_cart_items.exists %}
+    <a class="btn btn-warning" style="color:white;"href="{% url 'delivery' %}"><h4>PROCEED TO BUY</h4></a>
+  {% endif %}
+</div>
+{% endblock %}

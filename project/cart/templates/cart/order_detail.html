@@ -1,0 +1,36 @@
+{% extends "cart/base.html" %}
+
+{% block content %}
+
+<div class="jumbotron">
+  <h1>{{object.customer}}</h1>
+  <p>
+
+  </p>
+  <h2>ORDERED : {{object.is_ordered }}</h2>
+  <p>
+
+  </p>
+  <h2>ORDER ITEMS</h2>
+  {% for item in object.items.all %}
+  <table class="table" >
+
+  <tr>
+
+  <td><h3>{{ forloop.counter}}</h3></td>
+    <td>  <h3><a href="{% url 'orderitemdetail' item.id %}">{{item.product.title}}</a></h3>
+    </td>
+
+
+
+</tr>
+</table>
+
+  {% endfor %}
+  <a class="btn btn-warning" href="{% url 'orderupdate' object.id %}">UPDATE</a>
+
+  <a class="btn btn-danger" href="{% url 'orderdelete' object.id %}">DELETE</a>
+
+  </div>
+
+{% endblock %}

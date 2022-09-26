@@ -1,0 +1,15 @@
+{% extends "cart/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="jumbotron">
+
+<h1>Select a delivery address</h1>
+<form  >
+  {% csrf_token %}
+  {{form|crispy}}
+
+  <a class="btn btn-primary"href="{% url 'payment' %}">CONTINUE</a>
+</form>
+</div>
+{% endblock %}

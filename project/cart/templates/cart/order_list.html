@@ -1,0 +1,45 @@
+{% extends "cart/base.html" %}
+{% block content %}
+<div class="jumbotron">
+
+ <h1>ORDERS</h1>
+ <p>
+
+ </p>
+
+ <table class="table  table-hover table-dark">
+   {% if object_list.exists%}
+   <thead class="bg-danger">
+
+     <tr>
+       <th><h2>CUSTOMER</h2></th>
+       <th><h2>ORDERED</h2></th>
+
+       <th></th>
+
+     </tr>
+
+   </thead>
+{% endif%}
+ {% for order in object_list %}
+
+ <tr>
+   <td><h4><a href="{% url 'orderdetail' order.id %}">{{ order.customer }}</a></h4></td>
+   <td><h4>{{ order.is_ordered }}</h4></td>
+
+
+
+ </tr>
+ <tr>
+     <td>
+       {% empty %}
+      <h1> NO USER ORDERS </h1>
+     </td>
+</tr>
+{% endfor %}
+</table>
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends "cart/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="jumbotron" >
+  <h1> PRODUCT</h1>
+  <p></p>
+  <form  method="post" enctype="multipart/form-data" >
+    {% csrf_token %}
+      {{ form.title|as_crispy_field }}
+      {{ form.image }}
+      <p>
+
+      </p>
+      {{ form.category|as_crispy_field }}
+      {{ form.price|as_crispy_field }}
+      {{ form.seller|as_crispy_field }}
+      {{ form.description|as_crispy_field }}
+
+
+      <button type="submit" class="btn btn-primary">SUBMIT</button>
+      <p></p>
+
+  </form>
+
+
+</div>
+{% endblock %}

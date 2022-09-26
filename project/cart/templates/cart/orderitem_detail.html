@@ -1,0 +1,26 @@
+{% extends "cart/base.html" %}
+
+{% block content %}
+
+<div class="jumbotron">
+  <h1>{{object.customer}}</h1>
+  <p>
+
+  </p>
+  <h2>PRODUCT : {{object.product.title }}</h2>
+  <p>
+
+  </p>
+  <h2>ORDERED : {{object.is_ordered }}</h2>
+  <p>
+
+  </p>
+  <h2>QUANTITY : {{ object.quantity }}</h2>
+
+  <a class="btn btn-warning" href="{% url 'orderitemupdate' object.id %}">UPDATE</a>
+
+  <a class="btn btn-danger" href="{% url 'orderitemdelete' object.id %}">DELETE</a>
+
+  </div>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "cart/base.html" %}
+
+{% block content %}
+<div class="jumbotron">
+  <h1>PRODUCTS</h1>
+
+</div>
+
+<div class="jumbotron" style="background:transparent">
+  <div class="row" class="mx-auto d-block img-fluid unlock-icon">
+  {% for product in object_list %}
+  <div class="card text-center col-lg-3 col-xs-6 " style="border-radius:2%;margin:20px;padding-left:40px">
+  <img class="card-img-top" style="width:100%;height:300px"src="{{ product.image.url }}" alt="">
+  <div class="card-body">
+    <a href="{% url 'productdetail' product.id %}"><h2 style="color:black" class="card-title">{{ product.title }}</h2></a>
+
+    <h2 class="card-text" style="color:red">Rs {{ product.price }}</h2>
+</div>
+</div>
+{% endfor %}
+
+</div>
+
+</div>
+
+  {% endblock %}

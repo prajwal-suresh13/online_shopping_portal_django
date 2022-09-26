@@ -1,0 +1,8 @@
+{% extends "cart/base.html" %}
+{% block content %}
+<form method="POST" >
+  {% csrf_token %}
+    <h1>Are you sure you want to delete "{{ object.username }}"?</h1>
+    <button class="btn btn-danger"  type="submit" name="button">DELETE</button>
+</form>
+{% endblock%}

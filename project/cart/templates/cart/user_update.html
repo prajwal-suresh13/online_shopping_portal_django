@@ -1,0 +1,23 @@
+{% extends "cart/base.html" %}
+
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="jumbotron">
+  <h1>PROFILE INFO</h1>
+  <p></p>
+  <form  method="POST" >
+    {% csrf_token %}
+    {{form|crispy}}
+
+
+
+      <p></p>
+
+      <button type="submit" class="btn btn-primary">UPDATE</button>
+
+
+  </form>
+
+
+</div>
+{% endblock %}
